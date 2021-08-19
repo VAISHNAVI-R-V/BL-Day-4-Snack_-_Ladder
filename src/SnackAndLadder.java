@@ -1,13 +1,29 @@
 public class SnackAndLadder {
-    public static void main(String[] args) {
-        System.out.println("Welcome to Snake And Ladder Game");
-        // Player Start Position
-        int position = 0;
-        System.out.println("Player start position : " + position);
+    public static final int noPlay = 0;
+    public static final int ladder = 1;
+    public static final int snake = 2;
 
-        // Dice value i.e between 1 to 6
-        int Roll_Die = (int) (Math.floor((Math.random() * 10 )) % 6 ) + 1;
-        System.out.println("Rolled die :  " +Roll_Die);
+    public static void main(String[] args) {
+        int initial_position = 0;
+        int roll_die = (int) ((Math.floor(Math.random() * 10)) % 6) + 1;
+        int check_option = (int) ((Math.floor(Math.random() * 10)) % 3);
+        switch (check_option) {
+            case noPlay:
+                initial_position = 0;
+                System.out.println("Its a NO PLAY! Player stays in the same position!");
+                break;
+            case ladder:
+                initial_position += roll_die;
+                System.out.println("Its a LADDER! Player moves ahead by " + roll_die );
+                break;
+            case snake:
+                initial_position -= roll_die;
+                System.out.println("Its a SNAKE! Player moves behind by " + roll_die );
+                break;
+            default:
+                System.out.println("Error! Please check!");
+                break;
+        }
+        System.out.println("Current position of the player in the game is: " + initial_position);
     }
 }
-
